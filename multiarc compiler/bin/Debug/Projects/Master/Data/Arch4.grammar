@@ -1,0 +1,93 @@
+/* This is auto-generated text. Do not edit! */
+%header%
+
+GRAMMARTYPE = "LL"
+CASESENSITIVE = "false"
+
+%tokens%
+
+LD = "LD"
+ST = "ST"
+ADD = "ADD"
+HALT = "HALT"
+JMP = "JMP"
+OUT = "OUT"
+ITR = "ITR"
+RTI = "RTI"
+R0 = "R0"
+R1 = "R1"
+R2 = "R2"
+R3 = "R3"
+R4 = "R4"
+R5 = "R5"
+R6 = "R6"
+R7 = "R7"
+R8 = "R8"
+R9 = "R9"
+R10 = "R10"
+R11 = "R11"
+R12 = "R12"
+R13 = "R13"
+R14 = "R14"
+R15 = "R15"
+BL = "BL"
+BH = "BH"
+BX = "BX"
+PC = "PC"
+
+EQUALS = "="
+LEFT_PAREN = "("
+RIGHT_PAREN = ")"
+HASH = "#"
+COLON = ":"
+COMMA = ","
+ORG = "org"
+
+SIGN = <<[+-]>>
+DEC_NUMBER = <<[0-9]+>>
+BIN_NUMBER = <<[01]+[bB]>>
+OCT_NUMBER = <<[0-8]+[oO]>>
+HEX_NUMBER = <<[0-9a-f]+[hH]>>
+IDENTIFIER = <<[a-z][a-z0-9_]*>>
+
+ENTER = <<[\n\r]+>>
+SINGLE_LINE_COMMENT = <<;.*>> %ignore%
+WHITESPACE = <<[ \t]+>> %ignore%
+
+%productions%
+
+Program = [Separator] [Origin] Lines ;
+
+Separator = ENTER (ENTER)* ;
+
+Origin = ORG DEC_NUMBER Separator ;
+
+Lines = Line (Line)* ;
+
+Line = [IDENTIFIER ":"] Instruction Separator ;
+
+IMMED = "#"IDENTIFIER | "#" [SIGN] DEC_NUMBER | "#" [SIGN] HEX_NUMBER ;
+
+MEMDIR = IDENTIFIER | DEC_NUMBER ;
+
+REGDIR = R0 | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12 | R13 | R14 | R15 ;
+
+REGIND = "(" R0 ")" | "(" R1 ")" | "(" R2 ")" | "(" R3 ")" | "(" R4 ")" | "(" R5 ")" | "(" R6 ")" | "(" R7 ")" | "(" R8 ")" | "(" R9 ")" | "(" R10 ")" | "(" R11 ")" | "(" R12 ")" | "(" R13 ")" | "(" R14 ")" | "(" R15 ")" ;
+
+PCREL = IDENTIFIER | DEC_NUMBER ;
+
+ABSL = IDENTIFIER | DEC_NUMBER ;
+
+ld1 = LD ( REGDIR ) COMMA ( MEMDIR | IMMED ) ;
+
+ld2 = LD ( REGDIR ) COMMA ( REGIND ) ;
+
+jmp1 = JMP ( PCREL ) ;
+
+halt1 = HALT  ;
+
+out1 = OUT ( IMMED ) ;
+
+int1 = ITR ( ABSL ) ;
+
+Instruction = ( ld1 ) | ( ld2 ) | ( jmp1 ) | ( halt1 ) | ( out1 ) | ( int1 ) ;

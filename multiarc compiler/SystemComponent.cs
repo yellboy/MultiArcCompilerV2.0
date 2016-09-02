@@ -68,7 +68,14 @@ namespace MultiArc_Compiler
         /// </returns>
         public Port GetPort(string name)
         {
-            return ports.FirstOrDefault(port => port.Name.ToLower().Equals(name.ToLower()));
+            var p = ports.FirstOrDefault(port => port.Name.ToLower().Equals(name.ToLower()));
+
+            if (p == null)
+            {
+                throw new Exception("There is no port with name " + name);
+            }
+
+            return p;
         }
 
         public Pin GetPin(string name)
@@ -84,7 +91,7 @@ namespace MultiArc_Compiler
                 }
             }
 
-            return null;
+            throw new Exception("There is no pin with name " + name);
         }
 
         /// <summary>

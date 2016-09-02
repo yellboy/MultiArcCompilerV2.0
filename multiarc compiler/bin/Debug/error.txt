@@ -1,18 +1,22 @@
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at MultiArc_Compiler.DragAndDropPanel.GetSelectedConnectors() in d:\MultiArc Compiler\multiarc compiler\DragAndDropPanel.cs:line 146
-   at MultiArc_Compiler.DragAndDropPanel.DoTheRemove() in d:\MultiArc Compiler\multiarc compiler\DragAndDropPanel.cs:line 117
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'Clipboard'.
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at MultiArc_Compiler.Clipboard.EnableCloseButton() in d:\MultiArc Compiler\multiarc compiler\Clipboard.cs:line 395
+   at MultiArc_Compiler.UserSystem.RemoveComponent(SystemComponent component) in d:\MultiArc Compiler\multiarc compiler\UserSystem.cs:line 357
+   at MultiArc_Compiler.Clipboard.RemoveControls(List`1 selectedControls) in d:\MultiArc Compiler\multiarc compiler\Clipboard.cs:line 510
+   at MultiArc_Compiler.DragAndDropPanel.DoTheRemove() in d:\MultiArc Compiler\multiarc compiler\DragAndDropPanel.cs:line 115
    at MultiArc_Compiler.DragAndDropPanel.OnKeyDown(Object sender, KeyEventArgs e) in d:\MultiArc Compiler\multiarc compiler\DragAndDropPanel.cs:line 77
    at MultiArc_Compiler.Clipboard.Clipboard_KeyDown(Object sender, KeyEventArgs e) in d:\MultiArc Compiler\multiarc compiler\Clipboard.cs:line 499
    at System.Windows.Forms.Control.OnKeyDown(KeyEventArgs e)
    at System.Windows.Forms.Control.ProcessKeyEventArgs(Message& m)
    at System.Windows.Forms.Form.ProcessKeyPreview(Message& m)
-   at System.Windows.Forms.Control.ProcessKeyPreview(Message& m)
-   at System.Windows.Forms.Control.ProcessKeyPreview(Message& m)
    at System.Windows.Forms.Control.ProcessKeyMessage(Message& m)
    at System.Windows.Forms.Control.WmKeyChar(Message& m)
    at System.Windows.Forms.Control.WndProc(Message& m)
-   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
-   at System.Windows.Forms.UserControl.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
@@ -21,4 +25,17 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
    at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
    at System.Windows.Forms.Application.Run(Form mainForm)
-   at MultiArc_Compiler.Program.Main() in d:\MultiArc Compiler\multiarc compiler\Program.cs:line 25
+   at MultiArc_Compiler.Program.Main() in d:\MultiArc Compiler\multiarc compiler\Program.cs:line 25System.NullReferenceException: Object reference not set to an instance of an object.
+   at MultiArc_Compiler.CPU.CheckForInterupts(Variables vars) in d:\MultiArc Compiler\multiarc compiler\CPU.cs:line 1182
+   at MultiArc_Compiler.Executor.executeStepByStep() in d:\MultiArc Compiler\multiarc compiler\Executor.cs:line 286System.NullReferenceException: Object reference not set to an instance of an object.
+   at MultiArc_Compiler.CPU.CheckForInterupts(Variables vars) in d:\MultiArc Compiler\multiarc compiler\CPU.cs:line 1182
+   at MultiArc_Compiler.Executor.executeStepByStep() in d:\MultiArc Compiler\multiarc compiler\Executor.cs:line 286System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Exception: There is no port with name RD
+   at MultiArc_Compiler.SystemComponent.GetPort(String name) in d:\MultiArc Compiler\multiarc compiler\SystemComponent.cs:line 75
+   at DynamicClassArch4.ReadFromMemory(CPU cpu, UInt32 address)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at MultiArc_Compiler.CPU.ReadFromMemory(UInt32 address) in d:\MultiArc Compiler\multiarc compiler\CPU.cs:line 1175
+   at MultiArc_Compiler.Executor.executeStepByStep() in d:\MultiArc Compiler\multiarc compiler\Executor.cs:line 327

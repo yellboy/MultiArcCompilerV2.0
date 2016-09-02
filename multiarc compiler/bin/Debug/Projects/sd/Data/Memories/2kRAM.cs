@@ -4,7 +4,7 @@
 
 public static void Cycle(Memory memory)
 {
-	memory.WaitForRisingEdge("RD_WR0");
+	memory.WaitForRisingEdge("RD0");
 	var address = memory.GetPort("ADDR").Val;
 	byte[] binaryValue = memory[(uint)address];
 	int intValue = ConversionHelper.ConvertFromByteArrayToInt(binaryValue);
